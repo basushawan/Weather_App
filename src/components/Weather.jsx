@@ -33,7 +33,7 @@ function Weather() {
 
   const search = async (city) => {
     if (city === "") {
-      toast("Enter City Name");
+      toast.error("Enter City Name");
       return;
     }
     try {
@@ -43,7 +43,7 @@ function Weather() {
       const res = await fetch(url);
       const data = await res.json();
       if (!res.ok) {
-        toast(data.message);
+        toast.warning(data.message);
         return;
       }
       const icon = allIcons[data.weather[0].icon] || clear_icon;
